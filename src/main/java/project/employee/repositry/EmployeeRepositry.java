@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import project.employee.entity.Empoyee;
 
 @Repository
-public class EmployeeRepositry extends JpaRepository<Empoyee,Long> {
+//so the genrics are for the maping first is the entity and the second is the id data type
+public interface EmployeeRepositry extends JpaRepository<Empoyee,Long> {
 
 }
