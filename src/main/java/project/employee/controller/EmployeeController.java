@@ -18,6 +18,6 @@ public class EmployeeController {
     private final EmployeeService employeeService;
      @PostMapping("/employee")
     public Employee postEmployee(@RequestBody Employee employee){
-        return employeeService.postEmployee(employee)
+        return employeeService.postEmployee(employee);
     }
 }
