@@ -15,6 +15,10 @@ public class EmployeeService {
 //        this.employeeRepositry = employeeRepositry;
 //    }
 
+//    public EmployeeService(EmployeeRepositry employeeRepositry) {
+//        this.employeeRepositry = employeeRepositry;
+//    }
+
     public Employee postEmployee(Employee employee){
        return  employeeRepositry.save(employee);
    }
