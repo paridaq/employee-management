@@ -2,6 +2,7 @@ package project.employee.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.employee.entity.Employee;
@@ -21,6 +22,6 @@ public class EmployeeController {
     }
     @GetMapping("/employees")
     public ResponseEntity<Employee> getEmployee(){
-         return
+         return  new ResponseEntity<>(Employee, HttpHeaders.EXPECT)
     }
 }
