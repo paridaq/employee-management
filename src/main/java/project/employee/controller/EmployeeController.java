@@ -9,6 +9,10 @@ import project.employee.entity.Employee;
 import project.employee.service.EmployeeService;
 
 @RestController
+//@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin("*")
+// so when we use * in crossorigin anotation we can acces this api from any url or domain
+// so we can be specic with url like above
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class EmployeeController {
@@ -20,8 +24,5 @@ public class EmployeeController {
 
          return employeeService.postEmployee(employee);
     }
-    @GetMapping("/employees")
-    public ResponseEntity<Employee> getEmployee(){
-         return  new ResponseEntity<>(Employee, HttpHeaders.EXPECT)
-    }
+
 }
