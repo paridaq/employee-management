@@ -1,12 +1,16 @@
 package project.employee.controller;
 
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.employee.entity.Employee;
 import project.employee.service.EmployeeService;
+
+import java.util.List;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:5173")
@@ -24,5 +28,20 @@ public class EmployeeController {
 
          return employeeService.postEmployee(employee);
     }
+   @GetMapping("/employees")
+    public List<Employee>getAllEmployees(){
+         return employeeService.getAllEmployee();
+    }
+
+     @DeleteMapping("employee/{id}")
+     //soo the ? is for like the respose can be any type
+    public ResponseEntity<?>deleteEmployee(@PathVariable Long id){
+         try{
+             employeeService.deleteEmpoyee(id);
+             return new ResponseEntity<>("empoyee with id "+id+"deleted succesfully",HttpStatus.OK);
+         }catch (EntityNotFoundException e){
+             return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+         }
+     }
 
 }
