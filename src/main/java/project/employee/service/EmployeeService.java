@@ -34,5 +34,8 @@ public class EmployeeService {
        }
        employeeRepositry.deleteById(id);
    }
+    public Employee getEmployeeById(Long id){
+        return employeeRepositry.findById(id).orElse(null);
 
+    }
 }

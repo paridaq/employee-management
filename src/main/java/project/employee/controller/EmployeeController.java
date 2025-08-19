@@ -13,8 +13,8 @@ import project.employee.service.EmployeeService;
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:5173")
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:5173")
+//@CrossOrigin("*")
 // so when we use * in crossorigin anotation we can acces this api from any url or domain
 // so we can be specic with url like above
 @RequestMapping("/api")
@@ -43,5 +43,13 @@ public class EmployeeController {
              return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
          }
      }
+     @GetMapping("employee/{id}")
+    public    ResponseEntity<?>getEmployeeById( @PathVariable Long id){
+         Employee employee = employeeService.getEmployeeById(id);
+         if(employee== null) return ResponseEntity.notFound().build();
+         //build creates the final responsentity object to return
+         return ResponseEntity.ok(employee);
+     }
+
 
 }
