@@ -5,9 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
+import lombok.Setter;
 
 @Data
 @Entity
+
 public class Employee {
 
 
@@ -18,5 +20,6 @@ public class Employee {
      private  String email;
      private  String phone;
      private String department;
+
 
 }

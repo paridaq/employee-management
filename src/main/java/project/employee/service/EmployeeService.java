@@ -8,11 +8,14 @@ import project.employee.entity.Employee;
 import project.employee.repositry.EmployeeRepositry;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeService {
    private final EmployeeRepositry employeeRepositry;
+
+
 
 //    public EmployeeService(EmployeeRepositry employeeRepositry) {
 //        this.employeeRepositry = employeeRepositry;
@@ -36,6 +39,22 @@ public class EmployeeService {
    }
     public Employee getEmployeeById(Long id){
         return employeeRepositry.findById(id).orElse(null);
+
+    }
+
+    public Employee updateEmployee(Long id,Employee employee){
+        Optional<Employee>  optionalEmployee = employeeRepositry.findById(id);
+        if(optionalEmployee.isPresent()){
+            Employee existingEmployee = optionalEmployee.get();
+            existingEmployee.setEmail(employee.getEmail());
+            existingEmployee.setName(employee.getName());
+            existingEmployee.setPhone(employee.getPhone());
+            existingEmployee.setDepartment(employee.getDepartment());
+
+            return employeeRepositry.save(existingEmployee);
+
+        }
+        return null;
 
     }
 }
